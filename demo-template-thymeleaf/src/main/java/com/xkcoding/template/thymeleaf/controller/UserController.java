@@ -28,7 +28,7 @@ public class UserController {
 
         mv.addObject(user);
         mv.setViewName("redirect:/");
-
+        log.info(user.getName()+"，登陆成功。");
         request.getSession().setAttribute("user", user);
         return mv;
     }

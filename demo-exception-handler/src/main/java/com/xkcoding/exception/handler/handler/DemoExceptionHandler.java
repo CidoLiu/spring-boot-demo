@@ -32,7 +32,7 @@ public class DemoExceptionHandler {
     @ResponseBody
     public ApiResponse jsonErrorHandler(JsonException exception) {
         log.error("【JsonException】:{}", exception.getMessage());
-        return ApiResponse.ofException(exception);
+        return ApiResponse.ofException(exception); // 一个ApiResponse
     }
 
     /**
@@ -45,8 +45,8 @@ public class DemoExceptionHandler {
     public ModelAndView pageErrorHandler(PageException exception) {
         log.error("【DemoPageException】:{}", exception.getMessage());
         ModelAndView view = new ModelAndView();
-        view.addObject("message", exception.getMessage());
-        view.setViewName(DEFAULT_ERROR_VIEW);
+        view.addObject("message", exception.getMessage()); // 给view的message变量，通过thymeleaf解析
+        view.setViewName(DEFAULT_ERROR_VIEW); // error页面
         return view;
     }
 }

@@ -27,6 +27,7 @@ public class IndexController {
 
         User user = (User) request.getSession().getAttribute("user");
         if (ObjectUtil.isNull(user)) {
+            log.info("非法进入系统，重定向到登陆页。");
             mv.setViewName("redirect:/user/login");
         } else {
             mv.setViewName("page/index");
